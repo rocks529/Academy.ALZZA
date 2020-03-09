@@ -43,12 +43,12 @@ def dataset_division():
     train_y = train_data['Rings']
     train_y = train_y.to_numpy()
 
-#    global weight, bias
     output = np.matmul(train_x, weight) + bias
-    diff = output - train_y
+    diff = output - np.array([train_y]).T
     square = np.square(diff)
     loss = np.mean(square)
-    print(output, diff, loss)
+    print(diff, loss)
+    print(np.shape(output))
 
 
 if __name__ == "__main__":
